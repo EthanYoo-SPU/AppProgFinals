@@ -4,7 +4,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
-    timer(new QTimer)
+    timer(new QTimer),
+    httpManager(new HTTPManager)
 {
     ui->setupUi(this);
 
@@ -16,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     setWorldTime();
     timer->start(1000);
     changeGreetingLabel();
+
+    connect(httpManager, SIGNAL(ImageReady(QPixmap *)),
+            this, SLOT(processImage(QPixmap *)));
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +88,16 @@ void MainWindow::on_timeZoneBox_activated(int index)
     }
 
 
+}
+
+void MainWindow::processImage(QPixmap *image)
+{
+    ui->imageLabel->setPixmap(*image);
+}
+
+void MainWindow::on_imageDownloadButton_clicked()
+{
+    QString zip = ui->zipCodeEdit->text();
+    qDebug() << zip;
+    httpManager->sendImageRequest(zip);
 }
