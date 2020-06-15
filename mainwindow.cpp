@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QJsonObject>
+#include <QJsonArray>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -20,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(httpManager, SIGNAL(ImageReady(QPixmap *)),
             this, SLOT(processImage(QPixmap *)));
+    connect(httpManager, SIGNAL(WeatherJsonReady(QJsonObject *)),
+            this, SLOT(processWeatherJson(QJsonObject *)));
 }
 
 MainWindow::~MainWindow()
@@ -100,4 +104,43 @@ void MainWindow::on_imageDownloadButton_clicked()
     QString zip = ui->zipCodeEdit->text();
     qDebug() << zip;
     httpManager->sendImageRequest(zip);
+}
+
+void MainWindow::processWeatherJson(QJsonObject *json)
+{
+    qDebug() << "Json ready";
+    QString weather = json->value("weather").toArray()[0].toObject()["main"].toString();
+    QString weatherDesc = json->value("weather").toArray()[0].toObject()["description"].toString();
+    double temp = json->value("main").toObject()["temp"].toDouble();
+    double tempMin = json->value("main").toObject()["temp"].toDouble();
+    double tempMax = json->value("main").toObject()["temp"].toDouble();
+
+    qDebug() << weather;
+    qDebug() << weatherDesc;
+    qDebug() << temp;
+    qDebug() << tempMin;
+    qDebug() << tempMax;
+
+    ui->weatherLabel->setText("Current weather: " + weather + ", temp: " + QString::number(temp));
+
+
+    /*
+     *{
+     * "coord":{"lon":-122.36,"lat":47.64},
+     * "weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],
+     * "base":"stations",
+     * "main":{"temp":59.7,"feels_like":57.4,"temp_min":57.99,"temp_max":62.01,"pressure":1013,"humidity":58},
+     * "wind":{"speed":1.99,"deg":210,"gust":5.99},
+     * "clouds":{"all":97},
+     * "dt":1592192544,
+     * "sys":{"type":3,"id":19628,"country":"US","sunrise":1592136662,"sunset":1592194127},
+     * "timezone":-25200,"id":0,"name":"Seattle","cod":200}
+     */
+}
+
+void MainWindow::on_weatherDownloadButton_clicked()
+{
+    QString zip = ui->zipCodeEdit->text();
+    qDebug() << zip;
+    httpManager->sendWeatherRequest(zip);
 }

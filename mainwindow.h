@@ -29,6 +29,12 @@ private slots:
     void processImage(QPixmap *);
     void on_imageDownloadButton_clicked();
 
+    void processWeatherJson(QJsonObject *json);
+
+    void on_imageDownloadButton_2_clicked();
+
+    void on_weatherDownloadButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
@@ -40,6 +46,7 @@ private:
 
     HTTPManager *httpManager;
 
+    //Weather website address: https://api.openweathermap.org/data/2.5/weather?zip=98119,us&units=imperial&appid=69e6e9566c4c639b1751b6969c6fe1b5
 
 };
 #endif // MAINWINDOW_H

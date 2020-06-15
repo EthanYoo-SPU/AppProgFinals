@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1011</width>
-    <height>702</height>
+    <width>1089</width>
+    <height>795</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -174,7 +174,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Image Download</string>
+     <string>Set ZIP Code</string>
     </property>
    </widget>
    <widget class="QLabel" name="imageLabel">
@@ -203,13 +203,39 @@
      <string>98119</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="weatherDownloadButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>390</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Weather Download</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="weatherLabel">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>440</y>
+      <width>441</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>imageLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1011</width>
+     <width>1089</width>
      <height>21</height>
     </rect>
    </property>
