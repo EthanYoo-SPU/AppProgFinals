@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
     timer(new QTimer),
+    galleryTimer(new QTimer),
     httpManager(new HTTPManager)
 {
     ui->setupUi(this);
@@ -15,15 +16,38 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(setCurrentTime()));
     connect(timer, SIGNAL(timeout()),
             this, SLOT(setWorldTime()));
+    
     setCurrentTime();
     setWorldTime();
     timer->start(1000);
     changeGreetingLabel();
 
+    connect(galleryTimer, SIGNAL(timeout()),
+            this, SLOT(loadGalleryPic()));
+    loadGalleryPic();
+    galleryTimer->start(10000);
+    
     connect(httpManager, SIGNAL(ImageReady(QPixmap *)),
             this, SLOT(processImage(QPixmap *)));
     connect(httpManager, SIGNAL(WeatherJsonReady(QJsonObject *)),
             this, SLOT(processWeatherJson(QJsonObject *)));
+
+//    QString cloudImageName = ":/images/cloud.jpg";
+//    if(imageCloud.load(cloudImageName)) {
+//        imageCloud = imageCloud.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+//    }
+//    ui->weatherImage->setPixmap(imageCloud);
+
+//    int remainder = galleryLocation % 5;
+//    QString galleryImageName = ":/images/gallery" + QString::number(remainder) + ".jpg";
+//    qDebug() << galleryImageName;
+
+
+
+
+    //Automatically sets zip to 98119/SPU
+    httpManager->sendImageRequest("98119");
+    httpManager->sendWeatherRequest("98119");
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +78,19 @@ void MainWindow::setWorldTime() {
     ui->hourLCD_2->display(hour);
     ui->minuteLCD_2->display(minute);
     ui->secondLCD_2->display(second);
+}
+
+void MainWindow::loadGalleryPic()
+{
+    int remainder = galleryLocation % 5;
+    QString galleryImageName = ":/images/gallery" + QString::number(remainder) + ".jpg";
+    if(gallery.load(galleryImageName)) {
+        gallery = gallery.scaled(ui->galleryLabel->size(), Qt::KeepAspectRatio);
+    }
+    ui->galleryLabel->setPixmap(gallery);
+
+    galleryLocation += 1;
+
 }
 
 void MainWindow::changeGreetingLabel()
@@ -104,6 +141,10 @@ void MainWindow::on_imageDownloadButton_clicked()
     QString zip = ui->zipCodeEdit->text();
     qDebug() << zip;
     httpManager->sendImageRequest(zip);
+    //qDebug() << "Clicked weather button";
+    //QString zip = ui->zipCodeEdit->text();
+    qDebug() << zip;
+    httpManager->sendWeatherRequest(zip);
 }
 
 void MainWindow::processWeatherJson(QJsonObject *json)
@@ -121,7 +162,50 @@ void MainWindow::processWeatherJson(QJsonObject *json)
     qDebug() << tempMin;
     qDebug() << tempMax;
 
-    ui->weatherLabel->setText("Current weather: " + weather + ", temp: " + QString::number(temp));
+    //ui->weatherLabel->setText("Current weather: " + weather + ", temp: " + QString::number(temp));
+
+    QString cloudImageName = ":/images/cloud.jpg";
+    QString clearImageName = ":/images/clear.jpg";
+    QString sunImageName = ":/images/sun.jpg";
+    QString rainImageName = ":/images/rain.jpg";
+    QString thunderImageName = ":/images/thunderstorm.jpg";
+    QString snowImageName = ":/images/snow.png";
+
+
+    if(imageCloud.load(cloudImageName)) {
+        imageCloud = imageCloud.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+    if(imageRain.load(rainImageName)) {
+        imageRain = imageRain.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+    if(imageSun.load(sunImageName)) {
+        imageSun = imageSun.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+    if(imageClear.load(clearImageName)) {
+        imageClear = imageClear.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+    if(imageThunder.load(thunderImageName)) {
+        imageThunder = imageThunder.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+    if(imageSnow.load(snowImageName)) {
+        imageSnow = imageSnow.scaled(ui->weatherImage->size(), Qt::KeepAspectRatioByExpanding);
+    }
+
+    if(weather == "Clouds") {
+        ui->weatherImage->setPixmap(imageCloud);
+    }
+    if(weather == "Rain" || weather == "Drizzle") {
+        ui->weatherImage->setPixmap(imageRain);
+    }
+    if(weather == "Clear") {
+        ui->weatherImage->setPixmap(imageClear);
+    }
+    if(weather == "Snow") {
+        ui->weatherImage->setPixmap(imageSnow);
+    }
+    if(weather == "Thunderstorm") {
+        ui->weatherImage->setPixmap(imageThunder);
+    }
 
 
     /*
@@ -140,7 +224,13 @@ void MainWindow::processWeatherJson(QJsonObject *json)
 
 void MainWindow::on_weatherDownloadButton_clicked()
 {
+    qDebug() << "Clicked weather button";
     QString zip = ui->zipCodeEdit->text();
     qDebug() << zip;
     httpManager->sendWeatherRequest(zip);
+}
+
+void MainWindow::on_imageDownloadButton_2_clicked()
+{
+
 }
