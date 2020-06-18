@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1089</width>
-    <height>795</height>
+    <width>1416</width>
+    <height>798</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -203,25 +203,25 @@
      <string>98119</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="weatherDownloadButton">
+   <widget class="QLabel" name="weatherImage">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>390</y>
-      <width>101</width>
-      <height>41</height>
+      <x>1030</x>
+      <y>70</y>
+      <width>331</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="text">
-     <string>Weather Download</string>
+     <string>weatherImage</string>
     </property>
    </widget>
-   <widget class="QLabel" name="weatherLabel">
+   <widget class="QLabel" name="galleryLabel">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>440</y>
-      <width>441</width>
+      <x>10</x>
+      <y>400</y>
+      <width>501</width>
       <height>311</height>
      </rect>
     </property>
@@ -235,7 +235,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1089</width>
+     <width>1416</width>
      <height>21</height>
     </rect>
    </property>
