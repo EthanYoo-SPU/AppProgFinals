@@ -153,14 +153,23 @@ void MainWindow::processWeatherJson(QJsonObject *json)
     QString weather = json->value("weather").toArray()[0].toObject()["main"].toString();
     QString weatherDesc = json->value("weather").toArray()[0].toObject()["description"].toString();
     double temp = json->value("main").toObject()["temp"].toDouble();
-    double tempMin = json->value("main").toObject()["temp"].toDouble();
-    double tempMax = json->value("main").toObject()["temp"].toDouble();
+    double tempMin = json->value("main").toObject()["temp_min"].toDouble();
+    double tempMax = json->value("main").toObject()["temp_max"].toDouble();
 
     qDebug() << weather;
     qDebug() << weatherDesc;
     qDebug() << temp;
     qDebug() << tempMin;
     qDebug() << tempMax;
+
+    QString weatherDescAlt = weatherDesc.toUpper();
+
+
+
+    ui->minTempLabel->setNum(tempMin);
+    ui->currentTempLabel->setNum(temp);
+    ui->maxTempLabel->setNum(tempMax);
+    ui->weatherDescLabel->setText(weatherDescAlt);
 
     //ui->weatherLabel->setText("Current weather: " + weather + ", temp: " + QString::number(temp));
 
