@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1416</width>
+    <width>1539</width>
     <height>798</height>
    </rect>
   </property>
@@ -14,14 +14,22 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(32, 64, 81);</string>
+   </property>
    <widget class="QLCDNumber" name="hourLCD">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>161</width>
-      <height>141</height>
+      <x>20</x>
+      <y>120</y>
+      <width>171</width>
+      <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="digitCount">
      <number>2</number>
@@ -33,11 +41,16 @@
    <widget class="QLCDNumber" name="minuteLCD">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>80</y>
+      <x>200</x>
+      <y>120</y>
       <width>161</width>
-      <height>141</height>
+      <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="digitCount">
      <number>2</number>
@@ -49,11 +62,16 @@
    <widget class="QLCDNumber" name="secondLCD">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>80</y>
+      <x>370</x>
+      <y>120</y>
       <width>161</width>
-      <height>141</height>
+      <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="digitCount">
      <number>2</number>
@@ -65,19 +83,25 @@
    <widget class="QLabel" name="greetingLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>270</x>
+      <y>20</y>
       <width>501</width>
       <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <family>Modern</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);</string>
+    </property>
     <property name="text">
-     <string>greeting label</string>
+     <string>greetingLabel</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -86,11 +110,15 @@
    <widget class="QComboBox" name="timeZoneBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>230</y>
+      <x>550</x>
+      <y>120</y>
       <width>161</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(32, 64, 81);</string>
     </property>
     <item>
      <property name="text">
@@ -116,11 +144,16 @@
    <widget class="QLCDNumber" name="secondLCD_2">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>260</y>
+      <x>870</x>
+      <y>150</y>
       <width>131</width>
-      <height>121</height>
+      <height>131</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="digitCount">
      <number>2</number>
@@ -132,11 +165,16 @@
    <widget class="QLCDNumber" name="hourLCD_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>260</y>
-      <width>141</width>
-      <height>121</height>
+      <x>550</x>
+      <y>150</y>
+      <width>151</width>
+      <height>131</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="smallDecimalPoint">
      <bool>false</bool>
@@ -151,11 +189,16 @@
    <widget class="QLCDNumber" name="minuteLCD_2">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>260</y>
-      <width>141</width>
-      <height>121</height>
+      <x>710</x>
+      <y>150</y>
+      <width>151</width>
+      <height>131</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+alternate-background-color: rgb(59, 105, 120);
+border-color: rgb(231, 223, 213);</string>
     </property>
     <property name="digitCount">
      <number>2</number>
@@ -167,11 +210,15 @@
    <widget class="QPushButton" name="imageDownloadButton">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>10</y>
+      <x>430</x>
+      <y>330</y>
       <width>101</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);
+background-color: rgb(59, 105, 120);</string>
     </property>
     <property name="text">
      <string>Set ZIP Code</string>
@@ -180,24 +227,28 @@
    <widget class="QLabel" name="imageLabel">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>70</y>
-      <width>441</width>
-      <height>311</height>
+      <x>550</x>
+      <y>390</y>
+      <width>451</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="text">
-     <string>imageLabel</string>
+     <string>imageLabel (Map)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="zipCodeEdit">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>20</y>
+      <x>540</x>
+      <y>340</y>
       <width>113</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(231, 223, 213);
+color: rgb(32, 64, 81);</string>
     </property>
     <property name="text">
      <string>98119</string>
@@ -206,10 +257,10 @@
    <widget class="QLabel" name="weatherImage">
     <property name="geometry">
      <rect>
-      <x>1030</x>
-      <y>70</y>
-      <width>331</width>
-      <height>311</height>
+      <x>20</x>
+      <y>390</y>
+      <width>501</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="text">
@@ -219,14 +270,111 @@
    <widget class="QLabel" name="galleryLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>400</y>
-      <width>501</width>
-      <height>311</height>
+      <x>1030</x>
+      <y>50</y>
+      <width>491</width>
+      <height>301</height>
      </rect>
     </property>
     <property name="text">
-     <string>imageLabel</string>
+     <string>galleryLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="maxTempLabel">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>560</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);</string>
+    </property>
+    <property name="text">
+     <string>00.00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="minTempLabel">
+    <property name="geometry">
+     <rect>
+      <x>1260</x>
+      <y>560</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);</string>
+    </property>
+    <property name="text">
+     <string>00.00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="currentTempLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>560</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);</string>
+    </property>
+    <property name="text">
+     <string>00.00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="weatherDescLabel">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>520</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Franklin Gothic Book</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 223, 213);</string>
+    </property>
+    <property name="text">
+     <string>weatherDescLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -235,7 +383,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1416</width>
+     <width>1539</width>
      <height>21</height>
     </rect>
    </property>
